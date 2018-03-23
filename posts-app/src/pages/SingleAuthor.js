@@ -45,9 +45,11 @@ const SingleAuthor = ()=>{
           <p> Name: I am a very simple card. I am good at containing small bits of information.</p>
           <p> Slogan: I am a very simple card. I am good at containing small bits of information.</p>
         </div>
-   
       </div>
     </div>
+  </div >
+  <div className="center">
+        <Link to="/newpost" className="waves-effect waves-light btn-large "><i className="material-icons right">save</i>New Post</Link>
   </div>
 
   </div>

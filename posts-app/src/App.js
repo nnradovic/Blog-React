@@ -8,6 +8,7 @@ import SinglePost from "./pages/SinglePost";
 import About from "./pages/About";
 import ListAuthors from "./pages/ListAuthors";
 import SingleAuthor from "./pages/SingleAuthor";
+import NewPost from "./pages/NewPost";
 
 class App extends Component {
   render() {
@@ -21,7 +22,9 @@ class App extends Component {
           <Route exact  path="/about" component={About}/>
           <Route  exact  path="/authors" component={ListAuthors}/>
           <Route   path="/authors/1" component={SingleAuthor}/>
+          <Route path="/newpost/" component={NewPost}/>
         </Switch>
+        
         <Footer />
         </div>
        
