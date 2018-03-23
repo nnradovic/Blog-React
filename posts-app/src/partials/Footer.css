@@ -1,0 +1,10 @@
+.page-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+h5{
+line-height: 100%;
+margin-bottom: 20px; 
+}
