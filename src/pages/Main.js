@@ -6,34 +6,47 @@ import "./Main.css"
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      posts: []
-    }
-  }
 
+
+
+    this.state = {
+      posts: [],
+      search: ''
+    }
+
+  }
 
   fetchPosts = () => {
     service.fetchPost()
       .then(postObj => {
         this.setState({
-          posts: postObj
+          posts: postObj,
 
         })
       })
   }
 
+
   componentDidMount() {
     this.fetchPosts();
+
+
+
   }
 
-  renderPost = (post) => {
+  renderPost = (filterPost) => {
     return (
       <div className="col s12 m12 center ">
-        <div className="card #26a69a teal lighten-1  ">
+        <div className="card #9e9e9e grey">
 
-          <Link to={`/posts/${post.id}`} className="card-content white-text " key={post.id}>
-            <span className="card-title">{post.title}</span>
-            <p>{post.body}</p>
+          <Link to={`/posts/${filterPost.id}`} className="card-content white-text " key={filterPost.id}>
+            <br />
+            <i className="medium material-icons">fingerprint</i>
+            <br />
+            <span className="card-title">"{filterPost.title}"</span>
+            <h5>Description: </h5>
+
+            <h5>{filterPost.body}</h5>
 
           </Link>
         </div>
@@ -42,12 +55,15 @@ class Main extends React.Component {
   }
 
   render() {
+    let posts = this.state.posts
+    let filterPost = posts.filter((singlePost) => { return singlePost.title.indexOf(this.state.search) !== -1 })
+    console.log(filterPost);
+
     return (
-      <div className="  container " >
+      <div className="container " >
         <div className="row">
 
-
-          {this.state.posts.map((post) => this.renderPost(post))}
+          {this.state.posts.map((filterPost) => this.renderPost(filterPost))}
 
         </div>
       </div>

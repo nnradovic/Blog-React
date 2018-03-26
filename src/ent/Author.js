@@ -10,8 +10,7 @@ class Author {
         this.company = company;
 
 
-        console.log(this.id);
-        console.log(this.address);
+     
 
 
     }

@@ -1,19 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { createHashHistory } from 'history';
-
-class NewPost extends React.Component {
+import { service } from "./../services/fetchService";
+import "./EditPost.css";
+class EditPost extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      newTitle: "",
-      newBody: ""
+      newTitle: '',
+      newBody: ''
     }
 
     this.browserHistory = createHashHistory();
   }
-
+  componentDidMount() {
+    service.fetchSinglePost(this.props.match.params.id)
+      .then(singlePost => {
+        console.log(singlePost);
+        this.setState({
+          newTitle: singlePost.title,
+          newBody: singlePost.body
+        })
+        return singlePost;
+      })
+  }
 
   handleChangeTitle = (e) => {
     console.log(e.target.value);
@@ -29,25 +40,34 @@ class NewPost extends React.Component {
     })
   }
 
-  fetchPost = (e) => {
-    e.preventDefault()
 
-    return fetch('http://localhost:3004/posts', {
-      method: "POST",
+  editPosts = (e) => {
+    e.preventDefault()
+    console.log(this.props.match.params.id);
+
+    var url = 'http://localhost:3004/posts/' + this.props.match.params.id;
+    var option = {
+      method: 'PUT',
       body: JSON.stringify({
         title: this.state.newTitle,
-        body: this.state.newBody,
-        userId: 9
+        body: this.state.newBody
       }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
+      mode: 'cors',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }
+    fetch(url, option).then(function (data) {
+      return data.json()
+      console.log(data);
+
     })
       .then(() => {
-        this.browserHistory.push('/posts')
-        // window.location.href = "#/posts";
+        // this.browserHistory.push('/posts')
+        window.location.href = "#/posts";
       })
   }
+
 
   render() {
 
@@ -55,10 +75,10 @@ class NewPost extends React.Component {
 
       <div className="row container" >
         <form className="col s12 ">
-          <h1>NEW POST</h1>
+          <h1>EDIT POST</h1>
           <div className="row">
             <div className="input-field col s6">
-              <input placeholder="Title" type="text" name="newTitle" value={this.state.newTitle} onChange={this.handleChangeTitle} />
+              <input placeholder="Title" type="text" className="valInput" name="newTitle" value={this.state.newTitle} onChange={this.handleChangeTitle} />
               <label htmlFor="first_name"></label>
             </div>
           </div>
@@ -71,7 +91,7 @@ class NewPost extends React.Component {
 
           <Link to="/" className="waves-effect #bdbdbd grey lighten-1 waves-light btn-large" ><i className="material-icons left">cancel</i>cancel</Link>
           {/* <button className="waves-effect waves-light btn-large"><i className="material-icons right">cancel</i>cancel</button> */}
-          <button className="waves-effect #bdbdbd grey lighten-1 waves-light btn-large" onClick={this.fetchPost}><i className="material-icons right">save</i>save</button>
+          <button className="waves-effect #bdbdbd grey lighten-1 waves-light btn-large" onClick={this.editPosts}><i className="material-icons right">save</i>save</button>
 
 
           {/* <Link to="/" className="waves-effect waves-light btn-large" onClick={this.fetchPost}><i className="material-icons right">save</i>save</Link> */}
@@ -83,4 +103,4 @@ class NewPost extends React.Component {
   }
 }
 
-export default NewPost;
+export default EditPost;

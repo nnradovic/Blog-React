@@ -1,0 +1,35 @@
+.title{
+    font-size: 35px;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.actTitle{
+    font-size: 50px;
+    color: black;
+    text-transform: uppercase;
+}
+p{
+    font-size: 30px;   
+}
+
+.body{
+    font-weight: 600;
+}
+
+.act{
+    font-size: 30px;
+}
+h5{
+    font-size: 35px;
+}
+.more{
+    font-weight: 600;
+}
+
+li{
+    color: black;
+    text-transform: uppercase;
+
+
+}

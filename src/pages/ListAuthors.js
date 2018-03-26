@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 import { service } from "./../services/fetchService";
+import "./ListAuthors.css";
 
 class ListAuthors extends React.Component {
     constructor(props) {

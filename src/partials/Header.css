@@ -1,4 +1,13 @@
 .link{
     font-size: 20px;
-    border-right: 4px solid#004d40;
+    border-right: 4px solid #e0e0e0 ;
+}
+input{
+   background-color: white !important;
+   color:black;
+   border-radius: 10px !important;
+   font-size: 22px !important;
+   margin-left:20px !important;
+   padding-left: 10px !important;
+   border-bottom: none !important;
 }

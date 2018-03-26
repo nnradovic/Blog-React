@@ -1,3 +1,17 @@
 .card-content{
     margin-bottom: 120px;
 }
+.card-title{
+   text-transform: uppercase;       
+   font-weight: 900;
+}
+span{
+    margin: 0 20px;
+}
+h5{
+    margin:20px;    
+}
+.row{
+    margin-bottom: 100px;
+    margin-top: 100px;
+}

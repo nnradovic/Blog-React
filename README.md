@@ -1,3 +1,14 @@
+Install this before run app:
+ go to src/service/ and text this in terminal
+ run a server : npx json-server --watch db.json --port 3004
+
+ npm install 
+ npm install yarn
+ yarn start
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
