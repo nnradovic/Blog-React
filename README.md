@@ -1,6 +1,4 @@
-Install this before run app:
- go to src/service/ and text this in terminal
- run a server : npx json-server --watch db.json --port 3004
+
 
  npm install 
  npm install yarn
